@@ -22,7 +22,7 @@ function CardGroups() {
       {array.map((content) =>{
         const url = `/produtos/${content.id_produto}`
         return(
-          <Link style={{textDecoration:'none', color:'black'}} to={url} key={content.id_produto}>
+          <Link style={{textDecoration:'none', color:'black'}} to={url} key={Math.random()}>
             <Cards tit={content.nome} img={content.id_produto} price={content.preco} />
           </Link>
         )

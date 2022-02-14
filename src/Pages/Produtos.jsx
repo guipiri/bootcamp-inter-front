@@ -2,13 +2,15 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from '../components/Home/NavBar';
 import Cards from '../components/Produtos/Card';
+import { api } from '../Api';
+
 
 function Produtos() {
   const [prods, setProds] = useState([]);
 
   useEffect(async () => {
-    const response = await fetch('http://localhost:3000/products')
-    const data = await response.json();
+    const response = await api.get('/products')
+    const data = await response.data;
     setProds(data);
   }, [])
 

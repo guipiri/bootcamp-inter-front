@@ -2,17 +2,19 @@ import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import NavBar from '../components/Home/NavBar';
 import CardCompleto from '../components/Produtos/CardCompleto'
+import { api } from '../Api';
+
 
 function ProdutoUnico() {
 
   const {id} = useParams();
-  const url = `http://localhost:3000/products/${id}`
+  const url = `/products/${id}`
 
   const [prod, setProd] = useState([]);
 
   useEffect(async () => {
-    const response = await fetch(url)
-    const data = await response.json();
+    const response = await api.get(url)
+    const data = await response.data;
     setProd(data);
   }, [])
   
